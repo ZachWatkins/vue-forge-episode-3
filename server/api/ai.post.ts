@@ -1,4 +1,9 @@
-// Limit the endpoint to only POST requests.
+import { nanoid } from "nanoid";
 export default defineEventHandler((event) => {
-  return 'Hello ai'
+  return {
+    id: nanoid(),
+    createdAt: new Date(),
+    text: "Hello API!",
+    userId: "assistant",
+  }
 })
