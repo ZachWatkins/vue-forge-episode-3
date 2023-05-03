@@ -12,6 +12,9 @@ const props = withDefaults(
     usersTyping: () => [],
   }
 );
+defineEmits<{
+  (e: "newMessage", payload: Message): void;
+}>();
 </script>
 <template>
 </template>
