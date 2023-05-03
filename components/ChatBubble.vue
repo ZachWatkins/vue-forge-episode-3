@@ -9,16 +9,27 @@ defineProps<{
 }>();
 </script>
 <template>
-    <div class="chat">
-      <div class="chat-image avatar">
-        <div class="w-10 rounded-full">
-        </div>
-      </div>
-      <div class="chat-header mb-2">
-      </div>
-      <div class="chat-bubble py-0 prose prose-sm bg-white dark:bg-gray-900 max-w-max w-full">
+  <div
+    class="chat"
+    :class="{
+      'chat-end': myMessage,
+      'chat-start': !myMessage,
+    }"
+  >
+    <div class="chat-image avatar">
+      <div class="w-10 rounded-full">
       </div>
     </div>
+    <div class="chat-header mb-2">
+    </div>
+    <div
+      class="chat-bubble py-0 prose prose-sm bg-white dark:bg-gray-900 max-w-max w-full"
+      :class="{
+        'dark:bg-gray-700 bg-gray-600 dark:text-inherit text-white': myMessage,
+      }"
+    >
+    </div>
+  </div>
 </template>
 <style scoped>
 :deep(code) {
