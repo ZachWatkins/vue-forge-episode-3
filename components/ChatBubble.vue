@@ -30,14 +30,13 @@ defineProps<{
     <div
       class="chat-bubble py-0 prose prose-sm bg-white dark:bg-gray-900 max-w-max w-full"
       :class="{
-        'dark:bg-gray-700 bg-gray-600 dark:text-inherit text-white': myMessage,
+        'dark:bg-gray-700 bg-gray-600 dark:text-inherit': myMessage,
       }"
     >
       <slot>
         <Markdown :source="message?.text" class="w-full" />
       </slot>
     </div>
-    <!-- <div class="chat-footer opacity-50">Delivered</div> -->
   </div>
 </template>
 <style scoped>
