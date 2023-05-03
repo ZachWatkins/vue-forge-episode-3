@@ -22,6 +22,10 @@ defineProps<{
       </div>
     </div>
     <div class="chat-header mb-2">
+      {{ user?.name }}
+      <time v-if="message" class="text-xs opacity-50">{{
+        useTimeAgo(message?.createdAt).value
+      }}</time>
     </div>
     <div
       class="chat-bubble py-0 prose prose-sm bg-white dark:bg-gray-900 max-w-max w-full"
