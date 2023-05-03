@@ -40,6 +40,28 @@ function getUser(id: string) {
       v-if="open"
       class="box bg-gray-300 dark:bg-gray-800 rounded w-[450px] overflow-hidden"
     >
+      <!-- Header -->
+      <header
+        class="dark:bg-gray-900 bg-gray-200 px-4 flex justify-between items-center"
+      >
+        Customer Support Chat
+        <button class="p-4 pr-0" @click="open = false">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+            />
+          </svg>
+        </button>
+      </header>
       <!-- Messages -->
       <div class="messages p-4 overflow-y-scroll max-h-[80vh]">
         <ChatBubble
