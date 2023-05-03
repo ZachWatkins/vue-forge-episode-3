@@ -12,9 +12,20 @@ const props = withDefaults(
     usersTyping: () => [],
   }
 );
+
 defineEmits<{
   (e: "newMessage", payload: Message): void;
 }>();
+
+// focus input whenever chatbox is opened
+const open = ref(false);
+const input = ref();
+watch(open, () => {
+  if (!open.value) return;
+  nextTick(() => {
+    (input.value as HTMLInputElement).focus();
+  });
+});
 </script>
 <template>
 </template>
