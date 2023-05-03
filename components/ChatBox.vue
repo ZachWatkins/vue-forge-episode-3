@@ -80,6 +80,10 @@ function getUser(id: string) {
           :user="getUser(message.userId)"
           :my-message="message.userId === me.id"
         />
+
+        <ChatBubble v-for="user in usersTyping" :key="user.id" :user="user">
+          <AppLoading />
+        </ChatBubble>
       </div>
       <!-- Footer -->
       <footer class="p-2">
