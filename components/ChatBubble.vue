@@ -18,6 +18,7 @@ defineProps<{
   >
     <div class="chat-image avatar">
       <div class="w-10 rounded-full">
+        <img :src="user?.avatar" />
       </div>
     </div>
     <div class="chat-header mb-2">
