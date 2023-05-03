@@ -81,6 +81,31 @@ function getUser(id: string) {
           :my-message="message.userId === me.id"
         />
       </div>
+      <!-- Footer -->
+      <footer class="p-2">
+        <input
+          ref="input"
+          class="input w-full px-2 block"
+          type="text"
+          placeholder="Type your message"
+          @keypress.enter="
+            $emit('newMessage', {
+              id: nanoid(),
+              userId: me.id,
+              createdAt: new Date(),
+              text: ($event.target as HTMLInputElement).value,
+            });
+            ($event.target as HTMLInputElement).value = '';
+          "
+        />
+
+        <div class="h-6 py-1 px-2 text-sm italic">
+          <span v-if="usersTyping.length">
+            {{ usersTyping.map((user) => user.name).join(" and ") }}
+            {{ usersTyping.length === 1 ? "is" : "are" }} typing
+          </span>
+        </div>
+      </footer>
     </div>
   </div>
 </template>
