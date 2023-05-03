@@ -33,6 +33,9 @@ defineProps<{
         'dark:bg-gray-700 bg-gray-600 dark:text-inherit text-white': myMessage,
       }"
     >
+      <slot>
+        <Markdown :source="message?.text" class="w-full" />
+      </slot>
     </div>
   </div>
 </template>
