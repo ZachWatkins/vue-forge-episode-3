@@ -17,8 +17,13 @@ defineEmits<{
   (e: "newMessage", payload: Message): void;
 }>();
 
-// focus input whenever chatbox is opened
 const open = ref(false);
+
+function getUser(id: string) {
+  return props.users.find((user) => user.id === id);
+}
+
+// focus input whenever chatbox is opened
 const input = ref();
 watch(open, () => {
   if (!open.value) return;
@@ -27,9 +32,17 @@ watch(open, () => {
   });
 });
 
-function getUser(id: string) {
-  return props.users.find((user) => user.id === id);
-}
+// keep messages anchored to bottom
+const messageBox = ref();
+watch(
+  () => props.messages,
+  () => {
+    nextTick(
+      () => (messageBox.value.scrollTop = messageBox.value.scrollHeight)
+    );
+  },
+  { deep: true }
+);
 </script>
 <template>
   <div class="fixed bottom-[10px] right-[10px]">
@@ -63,6 +76,7 @@ function getUser(id: string) {
         </button>
       </header>
       <!-- Messages -->
+      <div class="messages p-4 overflow-y-scroll max-h-[80vh]" ref="messageBox">
         <div v-if="!messages.length" class="text-center w-[350px] m-auto">
           <strong class="text-lg">Chat with Botman!</strong>
           <p>Our A.I. powered assistant</p>
