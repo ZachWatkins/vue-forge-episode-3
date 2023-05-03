@@ -13,6 +13,18 @@ const props = withDefaults(
   }
 );
 
+const usersTypingText = computed(() => {
+  if (!props.usersTyping?.length) return ''
+
+  if (props.usersTyping.length === 1) {
+    return `${props.usersTyping[0].name} is typing...`;
+  }
+
+  if (props.usersTyping.length > 1) {
+    return `${props.usersTyping.length} people are typing...`;
+  }
+});
+
 defineEmits<{
   (e: "newMessage", payload: Message): void;
 }>();
@@ -118,10 +130,7 @@ watch(
         />
 
         <div class="h-6 py-1 px-2 text-sm italic">
-          <span v-if="usersTyping.length">
-            {{ usersTyping.map((user) => user.name).join(" and ") }}
-            {{ usersTyping.length === 1 ? "is" : "are" }} typing
-          </span>
+          {{ usersTypingText }}
         </div>
       </footer>
     </div>
