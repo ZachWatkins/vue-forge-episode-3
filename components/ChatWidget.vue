@@ -47,18 +47,24 @@ const usersTyping = ref<User[]>([]);
 // send messages to Chat API here
 // and in the empty function below
 
+const fetchAIResponse = async (message: Message) => {
+  const response = await fetch("http://localhost:3000/api/ai", {
+    method: "POST",
+    body: JSON.stringify(message),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const json = await response.json();
+  return json;
+};
+
 async function handleNewMessage(message: Message) {
   messages.value.push(message);
   usersTyping.value.push(bot.value);
-  setTimeout(() => {
-    usersTyping.value = [];
-    messages.value.push({
-      id: nanoid(),
-      createdAt: new Date(),
-      text: "Placeholder response until we implement the bot",
-      userId: "assistant",
-    });
-  }, 3000);
+  const nextMessage = await fetchAIResponse(message);
+  usersTyping.value = [];
+  messages.value.push(nextMessage);
 }
 </script>
 <template>
