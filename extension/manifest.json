@@ -1,0 +1,26 @@
+{
+    "manifest_version": 3,
+    "name": "AI Social Media Post Generator",
+    "version": "1.0.0",
+    "description": "Vue Forge Episode 3",
+    "author": "Zachary K. Watkins",
+    "action":{
+        "default_icon": {
+          "16": "icon16.png",
+          "36": "icon48.png",
+          "48": "icon48.png",
+          "128": "icon128.png"
+        },
+        "default_title": "AI Social Media Post Generator",
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "tabs"
+    ],
+    "content_scripts": [
+        {
+            "js": ["background.js"],
+            "matches": ["<all_urls>"]
+        }
+    ]
+}
