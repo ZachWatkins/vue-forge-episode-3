@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
     model: "gpt-3.5-turbo",
     temperature: 0,
     messages: [
-      { role: "system", content: "You are a prompt enginer for DALL-E" },
+      { role: "system", content: "You are a prompt engineer for DALL-E" },
       {
         role: "user",
         content: `Provide 4 physical items that represent 4 topics from this article.
