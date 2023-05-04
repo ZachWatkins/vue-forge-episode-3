@@ -34,6 +34,9 @@ export default defineEventHandler(async (event) => {
     prompt:
       " black and white sticker style illustration. stylize the items to be a repeating pattern, white background" +
       dallePrompt,
+    n: 1,
+    size: "256x256",
+    response_format: "url",
   });
   const imageURL = data.data[0].url;
   if (!imageURL) throw new Error("Image not generated");
