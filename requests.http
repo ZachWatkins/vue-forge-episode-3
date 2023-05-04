@@ -1,4 +1,4 @@
-### Open AI Chat API 
+### Open AI Chat API
 POST https://api.openai.com/v1/chat/completions
 Content-Type: application/json
 Authorization: Bearer {{$dotenv NUXT_OPENAI_API_KEY}}
@@ -19,4 +19,12 @@ Authorization: Bearer {{$dotenv NUXT_OPENAI_API_KEY}}
   "prompt": "a white siamese cat",
   "n": 1,
   "size": "1024x1024"
+}
+
+### App image endpoint
+POST http://localhost:3000/api/image
+Content-Type: application/json
+
+{
+  "url": "https://events.tti.tamu.edu/conference/youth-transportation-safety-summit/",
 }
