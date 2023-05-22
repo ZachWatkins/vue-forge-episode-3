@@ -21,8 +21,8 @@ async function handleImport(e: typeof form.value) {
   form.value = { ...e };
   if (!form.value.url) return;
   twitterCard.value.generate();
-  facebookCard.value.generate();
-  generateImage(form.value.url);
+  // facebookCard.value.generate();
+  // generateImage(form.value.url);
 }
 </script>
 <template>
@@ -31,8 +31,8 @@ async function handleImport(e: typeof form.value) {
     <UrlForm v-if="!isExtension" v-bind="form" @submit="handleImport"></UrlForm>
     <div>
       <CardTwitter ref="twitterCard" v-bind="form" />
-      <CardFacebook ref="facebookCard" v-bind="form" />
-      <CardImages :url="form.url" />
+      <!-- <CardFacebook ref="facebookCard" v-bind="form" /> -->
+      <!-- <CardImages :url="form.url" /> -->
     </div>
   </div>
 </template>

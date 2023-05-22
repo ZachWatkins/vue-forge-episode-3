@@ -5,12 +5,11 @@ export const twitterAgent = createAgent((context) => {
     messages: [
       {
         role: "system",
-        content:
-          "You are an exciting social media influencer sharing a new blog post",
+        content: "You are a teacher writing a new crossword puzzle for your students to teach them key terms and concepts mentioned in an article",
       },
       {
         role: "user",
-        content: `Create a tweet about the following article:  ${context.url}. Use line breaks for easy reading. MUST be shorter than 280 characters! MUST include URL`,
+        content: `Create a list of crossword puzzle answers using key terms mentioned in the following article: ${context.url}. Then create a list of hints for those answers.`,
       },
     ],
     max_tokens: 350,

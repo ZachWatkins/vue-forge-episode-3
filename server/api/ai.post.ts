@@ -15,12 +15,19 @@ export default defineEventHandler(async (event) => {
     throw new Error(`${body.agent} Agent does not exist`);
   }
 
-  const { data } = await openai.createChatCompletion({
-    model: "gpt-3.5-turbo",
-    messages: [],
-    temperature: body.temperature || 1,
-    // @ts-expect-error checking above if agent exists
-    ...agents[`${body.agent}Agent`](body),
-  });
-  return data;
+  try {
+    const { data } = await openai.createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: [],
+      temperature: body.temperature || 1,
+      // @ts-expect-error checking above if agent exists
+      ...agents[`${body.agent}Agent`](body),
+    });
+    console.log(data);
+    console.log(data.choices?.[0].message);
+    return data;
+  } catch (err) {
+    console.log(err);
+    return err;
+  }
 });
